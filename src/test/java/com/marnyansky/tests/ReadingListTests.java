@@ -42,17 +42,15 @@ public class ReadingListTests extends TestBase {
 
         //--- switch to alert/frame/window
         //--- waitUntil...isLoaded
-        //--- perform actions
 
+        //--- perform actions
         /*
         driver.switchTo().frame(driver.findElement(By.id("android:id/content")));
         Thread.sleep(5000);
         driver.findElement(By.id("org.wikipedia:id/text_input")).sendKeys("SeleniumList");
         driver.findElement(By.id("android:id/button1")).click();
         Thread.sleep(5000);
-        driver.findElement(By.id("org.wikipedia:id/text_input")).sendKeys("SeleniumList");
-        driver.findElement(By.id("android:id/button1")).click();
-        driver.switchTo().parentFrame();
+        //  driver.switchTo().parentFrame();
          */
 
         //--- switch to alert/frame/window
