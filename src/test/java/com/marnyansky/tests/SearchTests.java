@@ -1,12 +1,13 @@
 package com.marnyansky.tests;
 
+import com.marnyansky.pages.PgCurrentArticleHelper;
 import com.marnyansky.pages.PgHomePageHelper;
+import com.marnyansky.pages.PgSearchHelper;
+import com.marnyansky.util.Retry;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.marnyansky.pages.PgCurrentArticleHelper;
-import com.marnyansky.pages.PgSearchHelper;
 
 public class SearchTests extends TestBase {
 
@@ -37,7 +38,7 @@ public class SearchTests extends TestBase {
                 "\nThe article '" + article + "' is not in the search result\n");
     }
 
-    @Test(groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "regression"}, retryAnalyzer = Retry.class)
     public void testSearchArticleAndOpenIt() {
         searchPage.inputSearchQuery("Selenium")
                 .openArticle(article);

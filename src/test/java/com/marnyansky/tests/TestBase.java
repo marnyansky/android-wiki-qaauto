@@ -1,21 +1,18 @@
 package com.marnyansky.tests;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import com.marnyansky.SuiteConfiguration;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Capabilities;
-
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import ru.stqa.selenium.factory.WebDriverPool;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public abstract class TestBase {
 
@@ -37,7 +34,7 @@ public abstract class TestBase {
 
     @BeforeMethod(alwaysRun = true)
     public void initWebDriver() throws MalformedURLException {
-        //---Currently unable to use gridHubUrl variable instead of explicit URL
+        //---Currently unable to use gridHubUrl variable instead of baseUrl
         driver = new AndroidDriver(new URL(baseUrl), capabilities);
     }
 
