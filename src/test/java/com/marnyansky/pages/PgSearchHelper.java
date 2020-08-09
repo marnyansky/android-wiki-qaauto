@@ -15,6 +15,7 @@ public class PgSearchHelper extends PageBase {
     @FindBy(id = "org.wikipedia:id/page_list_item_title")
     List<WebElement> listOfArticles;
 
+    //--- CTOR
     public PgSearchHelper(WebDriver driver) {
         super(driver);
     }

@@ -11,6 +11,13 @@ public class PgCurrentArticleHelper extends PageBase {
     @FindBy(id = "org.wikipedia:id/view_page_title_text")
     WebElement articleTitle;
 
+    @FindBy(xpath = "//*[@content-desc='Add this article to a reading list']")
+    WebElement bookmarkIcon;
+
+    @FindBy(xpath = "//*[@content-desc='Navigate up']")
+    WebElement navigateUpCrossButton;
+
+    //--- CTOR
     public PgCurrentArticleHelper(WebDriver driver) {
         super(driver);
     }
@@ -19,13 +26,23 @@ public class PgCurrentArticleHelper extends PageBase {
         this.article = article;
     }
 
+    public boolean verifyArticleTitle() {
+        return articleTitle.getText().equals(article);
+    }
+
+    public void bookmarkArticle() {
+        bookmarkIcon.click();
+    }
+
+    public void navigateToHomePage() {
+        waitUntilElementIsClickable(navigateUpCrossButton, 5);
+        navigateUpCrossButton.click();
+    }
+
     @Override
     public void waitUntilPageIsLoaded() {
         waitUntilElementIsVisible(articleTitle, 30);
     }
 
-    public boolean verifyArticleTitle() {
-        return articleTitle.getText().equals(article);
-    }
 }
 

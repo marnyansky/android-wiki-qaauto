@@ -9,6 +9,10 @@ public class PgHomePageHelper extends PageBase {
     @FindBy(className = "android.widget.TextView")
     WebElement searchField;
 
+    @FindBy(id = "org.wikipedia:id/icon")
+    WebElement bookmarkIcon;
+
+    //--- CTOR
     public PgHomePageHelper(WebDriver driver) {
         super(driver);
     }
@@ -21,9 +25,14 @@ public class PgHomePageHelper extends PageBase {
         searchField.click();
     }
 
+    public void openReadingListPage() {
+        bookmarkIcon.click();
+    }
+
     @Override
     public void waitUntilPageIsLoaded() {
         waitUntilElementIsClickable(searchField, 15);
+        waitUntilElementIsClickable(bookmarkIcon, 15);
     }
 
 }
