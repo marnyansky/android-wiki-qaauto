@@ -32,7 +32,7 @@ public class ReadingListTests extends TestBase {
         searchPage.waitUntilPageIsLoaded();
     }
 
-    @Test(enabled = true, groups = {"regression"}/*, retryAnalyzer = Retry.class*/)
+    @Test(enabled = false, groups = {"regression"}/*, retryAnalyzer = Retry.class*/)
     public void testArticleIsInReadingList() throws InterruptedException {
         searchPage.inputSearchQuery("Selenium")
                 .openArticle(article);

@@ -22,6 +22,7 @@
         <classes>
             <class name="com.marnyansky.tests.HomePageTests"/>
             <class name="com.marnyansky.tests.SearchTests"/>
+            <class name="com.marnyansky.tests.ReadingListTests"/>
         </classes>
     </test>
 </suite>
