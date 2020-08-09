@@ -35,13 +35,13 @@ public class PgCurrentArticleHelper extends PageBase {
     }
 
     public void navigateToHomePage() {
-        waitUntilElementIsClickable(navigateUpCrossButton, 5);
         navigateUpCrossButton.click();
     }
 
     @Override
     public void waitUntilPageIsLoaded() {
         waitUntilElementIsVisible(articleTitle, 30);
+        waitUntilElementIsClickable(navigateUpCrossButton, 30);
     }
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Tests" thread-count="1" verbose="5">
-    <test name="smoke" enabled="true">
+    <test name="smoke" enabled="false">
         <groups>
             <run>
                 <include name="smoke"/>
@@ -13,7 +13,7 @@
         </classes>
     </test>
 
-    <test name="regression" enabled="false">
+    <test name="regression" enabled="true">
         <groups>
             <run>
                 <include name="regression"/>

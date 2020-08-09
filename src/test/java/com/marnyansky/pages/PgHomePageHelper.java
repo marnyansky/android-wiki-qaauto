@@ -9,7 +9,7 @@ public class PgHomePageHelper extends PageBase {
     @FindBy(className = "android.widget.TextView")
     WebElement searchField;
 
-    @FindBy(id = "org.wikipedia:id/icon")
+    @FindBy(xpath = "//*[@content-desc='My lists']")
     WebElement bookmarkIcon;
 
     //--- CTOR
