@@ -1,0 +1,7 @@
+platformName=Android
+deviceName=CustomPhone_7
+platformVersion=7.0
+appPackage=org.wikipedia
+appActivity=.main.MainActivity
+app=c:/_qa/_test/_qaauto/m20_0808hw9/apk/wikipedia.apk
+automationName=Uiautomator1
