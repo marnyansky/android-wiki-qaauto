@@ -44,4 +44,23 @@ public class ReadingListTests extends TestBase {
                         + "' doesn't correspond to the actual article title\n");
     }
 
+    @Test(groups = {"regression"}, retryAnalyzer = Retry.class)
+    public void testRemovedArticleIsNotInReadingList() {
+        String readingListTitle = "AndroidTestingList";
+
+        searchPage.inputSearchQuery("Selenium")
+                .openArticle(article);
+        currentArticlePage.createNewReadingListAndAddArticle(readingListTitle)
+                .navigateToHomePage();
+        homePage.openReadingListsPage();
+        readingListsPage.openReadingList();
+
+        currentReadingListPage.swipeToRemove()
+                .navigateToReadingListsPage();
+        readingListsPage.openReadingList();
+
+        Assert.assertTrue(currentReadingListPage.verifyNoArticlesInReadingList(),
+                "The reading list '" + readingListTitle + "' is not empty");
+    }
+
 }

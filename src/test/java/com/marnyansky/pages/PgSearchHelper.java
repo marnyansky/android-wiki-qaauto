@@ -27,7 +27,7 @@ public class PgSearchHelper extends PageBase {
     }
 
     public boolean articleIsInSearchResult(String articleTitle) {
-        waitUntilAllElementsAreVisible(listOfArticles, 15);
+        waitUntilAllElementsAreVisible(listOfArticles, 30);
         for (WebElement element : listOfArticles) {
             if (element.getText().equals(articleTitle)) {
                 return true;
@@ -37,7 +37,7 @@ public class PgSearchHelper extends PageBase {
     }
 
     public void openArticle(String article) {
-        waitUntilAllElementsAreVisible(listOfArticles, 15);
+        waitUntilAllElementsAreVisible(listOfArticles, 30);
         WebElement articleResult = driver.findElement(By.xpath("//*[@text='" + article + "']"));
         articleResult.click();
     }

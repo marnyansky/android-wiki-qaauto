@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class PgReadingListsHelper extends PageBase {
 
     @FindBy(id = "org.wikipedia:id/item_container")
-    WebElement articleItem;
+    WebElement articleReadingList;
 
     //--- CTOR
     public PgReadingListsHelper(WebDriver driver) {
@@ -15,8 +15,8 @@ public class PgReadingListsHelper extends PageBase {
     }
 
     public void openReadingList() {
-        waitUntilElementIsClickable(articleItem, 15);
-        articleItem.click();
+        waitUntilElementIsClickable(articleReadingList, 15);
+        articleReadingList.click();
     }
 
 }

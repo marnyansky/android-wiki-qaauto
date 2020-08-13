@@ -1,5 +1,8 @@
 package com.marnyansky.pages;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +28,6 @@ public abstract class PageBase {
     }
 
     public void fillField(WebElement element, String value) {
-        element.click();
         element.clear();
         element.sendKeys(value);
     }
@@ -53,6 +55,26 @@ public abstract class PageBase {
     public void scrollToElement(WebElement element) {
         JavascriptExecutor jsExec = (JavascriptExecutor) driver;
         jsExec.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public void swipeLeft(WebElement element) {
+        AppiumDriver appDriver = (AppiumDriver) driver;
+        TouchAction touchAction = new TouchAction(appDriver);
+        int elementLocationX = element.getLocation().x;
+        int elementLocationY = element.getLocation().y;
+        int elementWidth = element.getSize().width;
+        int elementHeight = element.getSize().height;
+
+        int fromX = (int) (elementLocationX + elementWidth * 0.5);
+        int fromY = (int) (elementLocationY + elementHeight * 0.5);
+        int toX = (int) (elementLocationX + elementWidth * 0.1);
+        int toY = fromY;
+
+        touchAction.press(PointOption.point(fromX, fromY))
+                .waitAction()
+                .moveTo(PointOption.point(toX, toY))
+                .release()
+                .perform();
     }
 
     //--- WebDriverWait methods
