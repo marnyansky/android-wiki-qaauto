@@ -60,14 +60,11 @@ public abstract class PageBase {
     public void swipeLeft(WebElement element) {
         AppiumDriver appDriver = (AppiumDriver) driver;
         TouchAction touchAction = new TouchAction(appDriver);
-        int elementLocationX = element.getLocation().x;
-        int elementLocationY = element.getLocation().y;
-        int elementWidth = element.getSize().width;
-        int elementHeight = element.getSize().height;
 
-        int fromX = (int) (elementLocationX + elementWidth * 0.5);
-        int fromY = (int) (elementLocationY + elementHeight * 0.5);
-        int toX = (int) (elementLocationX + elementWidth * 0.1);
+        //--- get element location, tap on the center of the element and swipe to the left
+        int fromX = (int) (element.getLocation().x + element.getSize().width*0.5);
+        int fromY = (int) (element.getLocation().y + element.getSize().height*0.5);
+        int toX = (int) (element.getLocation().x + element.getSize().width*0.1);
         int toY = fromY;
 
         touchAction.press(PointOption.point(fromX, fromY))
