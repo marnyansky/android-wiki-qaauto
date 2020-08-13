@@ -13,14 +13,14 @@ public class HomePageTests extends TestBase {
     @BeforeMethod(alwaysRun = true)
     public void initTests() {
         homePage = PageFactory.initElements(driver, PgHomePageHelper.class);
-        homePage.waitUntilPageIsLoaded();
     }
 
     @Test(groups = {"smoke", "regression"})
     public void testOpenHomePage() {
         String expectedPlaceholder = "Search Wikipedia";
 
-        Assert.assertEquals(homePage.getSearchFieldPlaceholder(), expectedPlaceholder,
+        Assert.assertEquals(homePage.getSearchFieldPlaceholder(),
+                expectedPlaceholder,
                 "\nActual placeholder doesn't correspond " +
                         "expected placeholder '" + expectedPlaceholder + "'\n");
     }

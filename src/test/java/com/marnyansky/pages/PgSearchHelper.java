@@ -21,12 +21,13 @@ public class PgSearchHelper extends PageBase {
     }
 
     public PgSearchHelper inputSearchQuery(String searchQuery) {
+        waitUntilElementIsClickable(searchFieldBlack, 15);
         fillField(searchFieldBlack, searchQuery);
-        waitUntilAllElementsAreVisible(listOfArticles, 15);
         return this;
     }
 
     public boolean articleIsInSearchResult(String articleTitle) {
+        waitUntilAllElementsAreVisible(listOfArticles, 15);
         for (WebElement element : listOfArticles) {
             if (element.getText().equals(articleTitle)) {
                 return true;
@@ -36,13 +37,9 @@ public class PgSearchHelper extends PageBase {
     }
 
     public void openArticle(String article) {
+        waitUntilAllElementsAreVisible(listOfArticles, 15);
         WebElement articleResult = driver.findElement(By.xpath("//*[@text='" + article + "']"));
         articleResult.click();
-    }
-
-    @Override
-    public void waitUntilPageIsLoaded() {
-        waitUntilElementIsClickable(searchFieldBlack, 15);
     }
 
 }

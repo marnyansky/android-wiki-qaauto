@@ -18,21 +18,18 @@ public class PgHomePageHelper extends PageBase {
     }
 
     public String getSearchFieldPlaceholder() {
+        waitUntilElementIsClickable(searchField, 30);
         return searchField.getText();
     }
 
     public void openSearchPage() {
+        waitUntilElementIsClickable(searchField, 15);
         searchField.click();
     }
 
-    public void openReadingListPage() {
-        bookmarkIcon.click();
-    }
-
-    @Override
-    public void waitUntilPageIsLoaded() {
-        waitUntilElementIsClickable(searchField, 15);
+    public void openReadingListsPage() {
         waitUntilElementIsClickable(bookmarkIcon, 15);
+        bookmarkIcon.click();
     }
 
 }

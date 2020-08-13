@@ -25,9 +25,7 @@ public class SearchTests extends TestBase {
         article = "Selenium (software)";
         currentArticlePage.setArticle(article);
 
-        homePage.waitUntilPageIsLoaded();
         homePage.openSearchPage();
-        searchPage.waitUntilPageIsLoaded();
     }
 
     @Test(groups = {"smoke", "regression"})
@@ -42,7 +40,6 @@ public class SearchTests extends TestBase {
     public void testSearchArticleAndOpenIt() {
         searchPage.inputSearchQuery("Selenium")
                 .openArticle(article);
-        currentArticlePage.waitUntilPageIsLoaded();
 
         Assert.assertTrue(currentArticlePage.verifyArticleTitle(),
                 "\nThe article title '" + article + "' doesn't correspond " +

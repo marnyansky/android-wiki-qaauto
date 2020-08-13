@@ -15,12 +15,8 @@ public class PgReadingListsHelper extends PageBase {
     }
 
     public void openReadingList() {
-        articleItem.click();
-    }
-
-    @Override
-    public void waitUntilPageIsLoaded() {
         waitUntilElementIsClickable(articleItem, 15);
+        articleItem.click();
     }
 
 }

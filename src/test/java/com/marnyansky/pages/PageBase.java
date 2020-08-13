@@ -56,8 +56,6 @@ public abstract class PageBase {
     }
 
     //--- WebDriverWait methods
-    public abstract void waitUntilPageIsLoaded();
-
     public void waitUntilElementIsClickable(By locator, int time) {
         try {
             new WebDriverWait(driver, time)

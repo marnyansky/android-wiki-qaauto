@@ -15,12 +15,8 @@ public class PgCurrentReadingListHelper extends PageBase {
     }
 
     public boolean verifyBookmarkedArticleTitle(String article) {
-        return articleTitle.getText().equals(article);
-    }
-
-    @Override
-    public void waitUntilPageIsLoaded() {
         waitUntilElementIsVisible(articleTitle, 15);
+        return articleTitle.getText().equals(article);
     }
 
 }

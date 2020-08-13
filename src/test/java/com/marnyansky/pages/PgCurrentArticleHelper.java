@@ -14,6 +14,15 @@ public class PgCurrentArticleHelper extends PageBase {
     @FindBy(xpath = "//*[@content-desc='Add this article to a reading list']")
     WebElement bookmarkIcon;
 
+    @FindBy(id = "org.wikipedia:id/onboarding_button")
+    WebElement acceptButton;
+
+    @FindBy(id = "org.wikipedia:id/text_input")
+    WebElement listTitleField;
+
+    @FindBy(id = "android:id/button1")
+    WebElement submitButton;
+
     @FindBy(xpath = "//*[@content-desc='Navigate up']")
     WebElement navigateUpCrossButton;
 
@@ -27,22 +36,25 @@ public class PgCurrentArticleHelper extends PageBase {
     }
 
     public boolean verifyArticleTitle() {
+        waitUntilElementIsVisible(articleTitle, 30);
         return articleTitle.getText().equals(article);
     }
 
-    public void bookmarkArticle() {
-        bookmarkIcon.click();
-    }
-
     public void navigateToHomePage() {
+        waitUntilElementIsClickable(navigateUpCrossButton, 15);
         navigateUpCrossButton.click();
     }
 
-    @Override
-    public void waitUntilPageIsLoaded() {
-        waitUntilElementIsVisible(articleTitle, 30);
-        waitUntilElementIsClickable(navigateUpCrossButton, 30);
-    }
+    public PgCurrentArticleHelper createNewReadingListAndAddArticle(String listTitle) {
+        waitUntilElementIsClickable(bookmarkIcon, 30);
+        bookmarkIcon.click();
+        waitUntilElementIsClickable(acceptButton, 15);
+        acceptButton.click();
+        waitUntilElementIsClickable(listTitleField, 15);
+        fillField(listTitleField, listTitle);
+        submitButton.click();
 
+        return this;
+    }
 }
 
