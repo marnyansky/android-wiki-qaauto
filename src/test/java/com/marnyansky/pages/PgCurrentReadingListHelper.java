@@ -29,9 +29,9 @@ public class PgCurrentReadingListHelper extends PageBase {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public boolean articleTitleIsCorrect(String article) {
+    public boolean articleTitleIsCorrect(String value) {
         waitUntilElementIsVisible(articleTitle, 15);
-        return articleTitle.getText().equals(article);
+        return elementTextIsCorrect(articleTitle, value);
     }
 
     public PgCurrentReadingListHelper swipeToRemove() {

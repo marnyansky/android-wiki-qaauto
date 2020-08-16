@@ -20,9 +20,9 @@ public class PgHomePageHelper extends PageBase {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public String getSearchFieldPlaceholder() {
+    public boolean placeholderIsCorrect(String placeholder) {
         waitUntilElementIsClickable(searchField, 30);
-        return searchField.getText();
+        return elementTextIsCorrect(searchField, placeholder);
     }
 
     public void openSearchPage() {

@@ -50,7 +50,7 @@ public class SearchTests extends TestBase {
         searchPage.inputSearchQuery(searchQuery)
                 .openArticle(articleTitle);
 
-        Assert.assertTrue(currentArticlePage.articleTitleIsCorrect(),
+        Assert.assertTrue(currentArticlePage.articleTitleIsCorrectDp(articleTitle),
                 "\nThe article title '" + articleTitle + "' doesn't correspond " +
                         "to the actual article title\n");
     }
@@ -58,11 +58,11 @@ public class SearchTests extends TestBase {
     @Test(groups = {"regression"}, retryAnalyzer = Retry.class,
             dataProviderClass = DataProviders.class,
             dataProvider = "articleSearchFromFileDp1")
-    public void testSearchArticleAndOpenItAdvanced(String searchQuery, String articleTitle) {
+    public void testSearchArticleAndOpenItDpAdvanced(String searchQuery, String articleTitle) {
         searchPage.inputSearchQuery(searchQuery)
                 .openArticle(articleTitle);
 
-        Assert.assertTrue(currentArticlePage.articleTitleIsCorrect(),
+        Assert.assertTrue(currentArticlePage.articleTitleIsCorrectDp(articleTitle),
                 "\nThe article title '" + articleTitle + "' doesn't correspond " +
                         "to the actual article title\n");
     }

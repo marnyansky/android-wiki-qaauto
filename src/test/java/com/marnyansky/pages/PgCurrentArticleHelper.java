@@ -35,13 +35,14 @@ public class PgCurrentArticleHelper extends PageBase {
         this.article = article;
     }
 
-    public void setArticle(String article) {
-        this.article = article;
-    }
-
     public boolean articleTitleIsCorrect() {
         waitUntilElementIsVisible(articleTitle, 30);
-        return articleTitle.getText().equals(article);
+        return elementTextIsCorrect(articleTitle, article);
+    }
+
+    public boolean articleTitleIsCorrectDp(String value) {
+        waitUntilElementIsVisible(articleTitle, 30);
+        return elementTextIsCorrect(articleTitle, value);
     }
 
     public void navigateToHomePage() {
@@ -60,5 +61,6 @@ public class PgCurrentArticleHelper extends PageBase {
 
         return this;
     }
+
 }
 

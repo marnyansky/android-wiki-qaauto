@@ -22,6 +22,10 @@ public abstract class PageBase {
     }
 
     //--- Utilitarian methods
+    public boolean elementTextIsCorrect(AndroidElement element, String text) {
+        return element.getText().equals(text);
+    }
+
     public void fillField(AndroidElement element, String value) {
         element.clear();
         element.sendKeys(value);
@@ -47,6 +51,7 @@ public abstract class PageBase {
         driver.rotate(ScreenOrientation.LANDSCAPE);
 
     }
+
     public void rotateScreenPortrait() {
         driver.rotate(ScreenOrientation.PORTRAIT);
     }

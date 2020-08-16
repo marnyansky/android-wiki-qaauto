@@ -24,12 +24,6 @@ public class PgSearchHelper extends PageBase {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public PgSearchHelper inputSearchQuery(String searchQuery) {
-        waitUntilElementIsClickable(searchFieldBlack, 15);
-        fillField(searchFieldBlack, searchQuery);
-        return this;
-    }
-
     public boolean articleIsInSearchResult(String articleTitle) {
         waitUntilAllElementsAreVisible(listOfArticles, 30);
         for (WebElement element : listOfArticles) {
@@ -40,11 +34,17 @@ public class PgSearchHelper extends PageBase {
         return false;
     }
 
+    public PgSearchHelper inputSearchQuery(String searchQuery) {
+        waitUntilElementIsClickable(searchFieldBlack, 15);
+        fillField(searchFieldBlack, searchQuery);
+        return this;
+    }
+
     public PgSearchHelper openArticle(String article) {
         waitUntilAllElementsAreVisible(listOfArticles, 30);
         AndroidElement articleResult = driver.findElement(By
-                        .xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title' " +
-                                "and @text='" + article + "']"));
+                .xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title' " +
+                        "and @text='" + article + "']"));
         articleResult.click();
 
         return this;

@@ -18,8 +18,7 @@ public class HomePageTests extends TestBase {
     public void testOpenHomePage() {
         String expectedPlaceholder = "Search Wikipedia";
 
-        Assert.assertEquals(homePage.getSearchFieldPlaceholder(),
-                expectedPlaceholder,
+        Assert.assertTrue(homePage.placeholderIsCorrect(expectedPlaceholder),
                 "\nActual placeholder doesn't correspond " +
                         "expected placeholder '" + expectedPlaceholder + "'\n");
     }

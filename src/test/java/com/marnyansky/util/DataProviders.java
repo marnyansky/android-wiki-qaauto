@@ -31,9 +31,9 @@ public class DataProviders {
     //--- bad practice to keep test data inside a method
     @DataProvider
     public static Iterator<Object[]> articleSearchDp1() {
-        List<Object[]> data = new ArrayList();
+        List<Object[]> data = new ArrayList<>();
         data.add(new Object[]{"Selenium", "Selenium (software)"});
-        data.add(new Object[]{"Selenium (software)", "Selenium (software)"}); //TODO fix: assertion fails
+        data.add(new Object[]{"Selenium (software)", "Selenium (software)"});
         return data.iterator();
     }
 
