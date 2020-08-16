@@ -1,23 +1,27 @@
 package com.marnyansky.pages;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 public class PgSearchHelper extends PageBase {
 
-    @FindBy(id = "org.wikipedia:id/search_src_text")
-    WebElement searchFieldBlack;
+    @AndroidFindBy(id = "org.wikipedia:id/search_src_text")
+    private AndroidElement searchFieldBlack;
 
-    @FindBy(id = "org.wikipedia:id/page_list_item_title")
-    List<WebElement> listOfArticles;
+    @AndroidFindBy(id = "org.wikipedia:id/page_list_item_title")
+    private List<WebElement> listOfArticles;
 
     //--- CTOR
-    public PgSearchHelper(WebDriver driver) {
+    public PgSearchHelper(AndroidDriver<AndroidElement> driver) {
         super(driver);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     public PgSearchHelper inputSearchQuery(String searchQuery) {
@@ -36,10 +40,14 @@ public class PgSearchHelper extends PageBase {
         return false;
     }
 
-    public void openArticle(String article) {
+    public PgSearchHelper openArticle(String article) {
         waitUntilAllElementsAreVisible(listOfArticles, 30);
-        WebElement articleResult = driver.findElement(By.xpath("//*[@text='" + article + "']"));
+        AndroidElement articleResult = driver.findElement(By
+                        .xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title' " +
+                                "and @text='" + article + "']"));
         articleResult.click();
+
+        return this;
     }
 
 }

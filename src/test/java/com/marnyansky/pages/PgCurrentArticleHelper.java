@@ -1,41 +1,45 @@
 package com.marnyansky.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.support.PageFactory;
 
 public class PgCurrentArticleHelper extends PageBase {
 
     private String article;
 
-    @FindBy(id = "org.wikipedia:id/view_page_title_text")
-    WebElement articleTitle;
+    @AndroidFindBy(id = "org.wikipedia:id/view_page_title_text")
+    private AndroidElement articleTitle;
 
-    @FindBy(xpath = "//*[@content-desc='Add this article to a reading list']")
-    WebElement bookmarkIcon;
+    @AndroidFindBy(xpath = "//*[@content-desc='Add this article to a reading list']")
+    private AndroidElement bookmarkIcon;
 
-    @FindBy(id = "org.wikipedia:id/onboarding_button")
-    WebElement acceptButton;
+    @AndroidFindBy(id = "org.wikipedia:id/onboarding_button")
+    private AndroidElement acceptButton;
 
-    @FindBy(id = "org.wikipedia:id/text_input")
-    WebElement listTitleField;
+    @AndroidFindBy(id = "org.wikipedia:id/text_input")
+    private AndroidElement listTitleField;
 
-    @FindBy(id = "android:id/button1")
-    WebElement submitButton;
+    @AndroidFindBy(id = "android:id/button1")
+    private AndroidElement submitButton;
 
-    @FindBy(xpath = "//*[@content-desc='Navigate up']")
-    WebElement navigateUpCrossButton;
+    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
+    private AndroidElement navigateUpCrossButton;
 
     //--- CTOR
-    public PgCurrentArticleHelper(WebDriver driver) {
+    public PgCurrentArticleHelper(AndroidDriver<AndroidElement> driver, String article) {
         super(driver);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        this.article = article;
     }
 
     public void setArticle(String article) {
         this.article = article;
     }
 
-    public boolean verifyArticleTitle() {
+    public boolean articleTitleIsCorrect() {
         waitUntilElementIsVisible(articleTitle, 30);
         return articleTitle.getText().equals(article);
     }

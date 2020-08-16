@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Tests" thread-count="1" verbose="5">
+
     <test name="smoke" enabled="false">
         <groups>
             <run>
@@ -25,4 +26,18 @@
             <class name="com.marnyansky.tests.ReadingListTests"/>
         </classes>
     </test>
+
+    <test name="retired" enabled="false">
+        <groups>
+            <run>
+                <include name="retired"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.marnyansky.tests.HomePageTests"/>
+            <class name="com.marnyansky.tests.SearchTests"/>
+            <class name="com.marnyansky.tests.ReadingListTests"/>
+        </classes>
+    </test>
+
 </suite>

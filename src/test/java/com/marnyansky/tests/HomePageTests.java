@@ -1,7 +1,6 @@
 package com.marnyansky.tests;
 
 import com.marnyansky.pages.PgHomePageHelper;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,7 +11,7 @@ public class HomePageTests extends TestBase {
 
     @BeforeMethod(alwaysRun = true)
     public void initTests() {
-        homePage = PageFactory.initElements(driver, PgHomePageHelper.class);
+        homePage = new PgHomePageHelper(driver);
     }
 
     @Test(groups = {"smoke", "regression"})

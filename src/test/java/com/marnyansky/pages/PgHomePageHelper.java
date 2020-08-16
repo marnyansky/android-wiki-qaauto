@@ -1,20 +1,23 @@
 package com.marnyansky.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.support.PageFactory;
 
 public class PgHomePageHelper extends PageBase {
 
-    @FindBy(className = "android.widget.TextView")
-    WebElement searchField;
+    @AndroidFindBy(className = "android.widget.TextView")
+    private AndroidElement searchField;
 
-    @FindBy(xpath = "//*[@content-desc='My lists']")
-    WebElement bookmarkIcon;
+    @AndroidFindBy(xpath = "//*[@content-desc='My lists']")
+    private AndroidElement bookmarkIcon;
 
     //--- CTOR
-    public PgHomePageHelper(WebDriver driver) {
+    public PgHomePageHelper(AndroidDriver<AndroidElement> driver) {
         super(driver);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     public String getSearchFieldPlaceholder() {

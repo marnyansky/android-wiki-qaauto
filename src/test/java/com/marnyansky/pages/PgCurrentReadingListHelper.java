@@ -1,32 +1,35 @@
 package com.marnyansky.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.support.PageFactory;
 
 public class PgCurrentReadingListHelper extends PageBase {
 
-    @FindBy(id = "org.wikipedia:id/page_list_item_title")
-    WebElement articleTitle;
+    @AndroidFindBy(id = "org.wikipedia:id/page_list_item_title")
+    private AndroidElement articleTitle;
 
-    @FindBy(id = "org.wikipedia:id/page_list_item_container")
-    WebElement articleContainer;
+    @AndroidFindBy(id = "org.wikipedia:id/page_list_item_container")
+    private AndroidElement articleContainer;
 
-    @FindBy(xpath = "//*[@content-desc='Navigate up']")
-    WebElement navigateBackButton;
+    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
+    private AndroidElement navigateBackButton;
 
-    @FindBy(id = "org.wikipedia:id/item_reading_list_statistical_description")
-    WebElement readingListStatistics;
+    @AndroidFindBy(id = "org.wikipedia:id/item_reading_list_statistical_description")
+    private AndroidElement readingListStatistics;
 
-    @FindBy(id = "org.wikipedia:id/reading_list_empty_text")
-    WebElement emptyReadingListMessage;
+    @AndroidFindBy(id = "org.wikipedia:id/reading_list_empty_text")
+    private AndroidElement emptyReadingListMessage;
 
     //--- CTOR
-    public PgCurrentReadingListHelper(WebDriver driver) {
+    public PgCurrentReadingListHelper(AndroidDriver<AndroidElement> driver) {
         super(driver);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public boolean verifyBookmarkedArticleTitle(String article) {
+    public boolean articleTitleIsCorrect(String article) {
         waitUntilElementIsVisible(articleTitle, 15);
         return articleTitle.getText().equals(article);
     }
@@ -42,7 +45,7 @@ public class PgCurrentReadingListHelper extends PageBase {
         navigateBackButton.click();
     }
 
-    public boolean verifyNoArticlesInReadingList() {
+    public boolean readingListIsEmpty() {
         waitUntilElementIsVisible(readingListStatistics, 15);
         waitUntilElementIsVisible(emptyReadingListMessage, 15);
         return readingListStatistics.getText().startsWith("0 of 0")
