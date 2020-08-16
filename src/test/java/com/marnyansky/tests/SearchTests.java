@@ -43,6 +43,19 @@ public class SearchTests extends TestBase {
                         "to the actual article title\n");
     }
 
+    @Test(groups = {"regression"})
+    public void testSearchArticleAndOpenItRandomFun() {
+        String penguinArticle = "Penguin";
+
+        searchPage.inputSearchQuery(penguinArticle)
+                .openArticle(penguinArticle);
+        currentArticlePage.articleTitleIsCorrectDp(penguinArticle);
+        currentArticlePage.randomFun(); //--- calamity begins
+
+        Assert.assertTrue(currentArticlePage.articleTitleIsCorrectDp(penguinArticle),
+                "\nMagic failure! The randomFun() broke the test!\n");
+    }
+
     @Test(groups = {"retired"}, retryAnalyzer = Retry.class,
             dataProviderClass = DataProviders.class,
             dataProvider = "articleSearchDp1")

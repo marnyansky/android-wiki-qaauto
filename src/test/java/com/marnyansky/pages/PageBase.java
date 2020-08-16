@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 
 public abstract class PageBase {
 
@@ -58,6 +59,34 @@ public abstract class PageBase {
 
     public void runInBackground(int seconds) {
         driver.runAppInBackground(Duration.ofSeconds(seconds));
+    }
+
+    public void randomFun() {
+        System.out.println("The random fun begins!");
+        for (int i = 0; i < 5; i++) { //--- maximum 5 random actions to prevent android emulator from freezing
+            int actionId = randomInt(3); //--- picks one of three possible actions
+            switch (actionId) {
+                case 0:
+                    driver.runAppInBackground(Duration.ofSeconds(randomInt(5)));
+                    System.out.println("Action " + actionId + " >>> Penguin hides in the snow");
+                    break;
+                case 1:
+                    driver.rotate(ScreenOrientation.PORTRAIT);
+                    System.out.println("Action " + actionId + " >>> Penguin stands still!");
+                    break;
+                case 2:
+                    driver.rotate(ScreenOrientation.LANDSCAPE);
+                    System.out.println("Action " + actionId + " >>> Penguin sleeps...ZZZzzz...");
+                    break;
+                default:
+                    throw new IllegalArgumentException("ERROR! actionId value is " + actionId);
+            }
+        }
+        System.out.println("=== END OF TEST ===");
+    }
+
+    private int randomInt(int bound) {
+        return new Random(System.currentTimeMillis()).nextInt(bound);
     }
 
     //--- WebDriverWait methods

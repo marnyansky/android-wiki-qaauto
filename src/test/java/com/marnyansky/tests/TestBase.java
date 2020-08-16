@@ -44,6 +44,7 @@ public abstract class TestBase {
     @AfterMethod(alwaysRun = true)
     public void tearDownMethod() {
         driver.resetApp();
+        driver.rotate(ScreenOrientation.PORTRAIT);
         driver.quit();
     }
 
