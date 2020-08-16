@@ -4,6 +4,7 @@ import com.marnyansky.SuiteConfiguration;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.ScreenOrientation;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -36,10 +37,12 @@ public abstract class TestBase {
     public void initWebDriver() throws MalformedURLException {
         //---Currently unable to use gridHubUrl variable instead of baseUrl
         driver = new AndroidDriver(new URL(baseUrl), capabilities);
+        driver.rotate(ScreenOrientation.PORTRAIT);
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDownMethod() {
+        driver.rotate(ScreenOrientation.PORTRAIT);
         driver.quit();
     }
 

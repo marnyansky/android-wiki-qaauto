@@ -1,14 +1,14 @@
 # android-wiki-qaauto
-QA Automation project for Android version of Wikipedia (using Appium)
+QA Automation project for wikipedia.apk (using Appium)
 
 Maven archetype:
 --- webdriver-testng-archetype ver.4.5
 
 AppiumDriver & AndroidDriver support:
---- implemented through POM.xml: io.appium dependency
+--- implemented via POM.xml: io.appium dependency
   
 capabilities:
---- resources/android.capabilities
+--- resources/android_customphone7.capabilities
 
 ! Known issues:
 --- initializing AppiumDriver without Grid
